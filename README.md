@@ -37,7 +37,7 @@ public abstract class Animal {
     }
 }
 ```
-⸻
+---
 
 ### 2.2 Open/Closed Principle (OCP)
 
