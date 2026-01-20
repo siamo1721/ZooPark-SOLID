@@ -1,17 +1,38 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.example.animals.Animal;
+import org.example.animals.Lion;
+import org.example.animals.Parrot;
+import org.example.animals.Snake;
+import org.example.employees.Keeper;
+import org.example.employees.Veterinarian;
+import org.example.report.ReportGenerator;
+import org.example.report.ZooReportService;
+
+import java.util.List;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Animal lion = new Lion("Симба");
+        lion.makeSound();
+        Animal parrot = new Parrot("Кеша");
+        parrot.makeSound();
+        Animal snake = new Snake("Каа");
+        snake.makeSound();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        List<Animal> animals = List.of(lion, parrot, snake);
+
+        Keeper keeper = new Keeper("Иван");
+        Veterinarian vet = new Veterinarian("Анна");
+
+        keeper.startWork();
+        keeper.feed(lion);
+        keeper.clean(lion);
+
+        vet.startWork();
+        vet.heal(snake);
+
+        ReportGenerator report = new ZooReportService();
+        report.generate(animals);
     }
 }
